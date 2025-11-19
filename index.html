@@ -69,9 +69,9 @@
 
     .grid {
       display: grid; gap: 18px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
     }
-    .step { background: var(--card); border-radius: 14px; padding: 18px; border: 1px solid rgba(255,255,255,0.08); }
+    .step { background: var(--card); border-radius: 14px; padding: 72px 18px; border: 1px solid rgba(255,255,255,0.08); }
     .step h3 { margin: 0 0 8px; font-size: 18px; }
     .step p { margin: 0 0 12px; color: var(--muted); }
     .step .thumb { width: 100%; border-radius: 10px; border: 1px dashed rgba(124,247,255,0.35); background: rgba(12,18,32,0.6); aspect-ratio: 16/9; display: grid; place-items: center; color: #7cf7ff; font-size: 13px; }
@@ -132,7 +132,7 @@
         </div>
         <div class="step">
           <h3>AR実行画面</h3>
-          <p>設定済みのARマーカーを探して検知すると、マーカー上に動画を表示します。ダブルタップで全画面切替。</p>
+          <p>設定済みのARマーカーを探して検知すると、マーカー上に動画を表示します。ダブルタップで全画面表示に切り替えます。</p>
           <div class="thumb">
             <video src="images/ArFragment_288.mp4" autoplay loop muted playsinline/>
           </div>
@@ -147,19 +147,26 @@
       <div class="grid">
         <div class="step">
           <h3>1. 設定画面</h3>
-          <p>設定画面で、ARマーカーと再生する動画の紐付け一覧が表示されます。</p>
+          <p>設定画面で、ARマーカーと再生する動画の紐付け一覧が表示されます。<br/>左がマーカー、右が動画です。</p>
           <img class="thumb" src="images/FreeFragment.png" alt="設定画面とAR実行画面の2画面構成イメージ" />
         </div>
 
         <div class="step">
-          <h3>2. 設定画面</h3>
-          <p>設定画面で、ARマーカーと再生する動画の紐付けを行います。</p>
-          <img class="thumb" src="images/FreeFragment.png" alt="ARマーカーと動画の紐付け設定イメージ" />
+          <h3>2. 紐付けダイアログ表示</h3>
+          <p>設定画面のリストでアイテムをダブルタップすると、紐付けダイアログが表示されます。この画面でARマーカーと動画の紐付け設定を行います。</p>
+          <img class="thumb" src="images/LinkingSettingsDialog.png" alt="ARマーカーと動画の紐付け設定イメージ" />
         </div>
 
         <div class="step">
-          <h3>3. リスト構成</h3>
-          <p>紐付け設定セットは10個。RecycleViewのリストで表示されます。</p>
+          <h3>3. 再生する動画を設定</h3>
+          <p>先に動画を設定してください。動画を設定することでARマーカーも自動で設定されます。</p>
+          <p>手順4でARマーカーを設定しますが、デフォルトのままでよければ、手順5を実行することもできます。</p>
+          <img class="thumb" src="images/LinkingSettingsDialog2+2.png" alt="ARマーカーと動画の紐付け設定イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>4. ARマーカーを設定</h3>
+          <p>ARマーカーは動画を設定すると自動で設定されますが、別のマーカーに変更することもできます。</p>
           <img class="thumb" src="images/step03_list.png" alt="10件の紐付けセットを持つリスト表示イメージ" />
         </div>
 
