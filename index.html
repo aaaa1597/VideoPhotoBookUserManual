@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VideoPhotoBook | 使い方ガイド</title>
+  <meta name="description" content="ARアプリ『VideoPhotoBook』の使い方ガイド。設定画面とAR実行画面の操作手順、Q&A、プライバシーポリシーを掲載。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --bg-grad-1: #0b0f1a;
+      --bg-grad-2: #1b1f3b;
+      --accent: #7cf7ff;
+      --accent-2: #ff7cf2;
+      --text: #e9f1ff;
+      --muted: #9bb4d4;
+      --card: #141a2b;
+      --success: #5cf29b;
+      --warning: #ffd56a;
+      --danger: #ff6b6b;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: radial-gradient(1200px 600px at 20% 10%, var(--bg-grad-2), var(--bg)); color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif; }
+
+    /* Gamification vibes */
+    .pixel-title { font-family: "Press Start 2P", monospace; letter-spacing: 0.025em; }
+    .glow { text-shadow: 0 0 12px rgba(124, 247, 255, 0.65), 0 0 24px rgba(255, 124, 242, 0.35); }
+    .btn {
+      display: inline-block; padding: 12px 18px; border-radius: 12px; font-weight: 700; color: #0b0f1a;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)); border: none; cursor: pointer;
+      box-shadow: 0 6px 24px rgba(124, 247, 255, 0.25), 0 6px 24px rgba(255, 124, 242, 0.2);
+      transition: transform 0.12s ease, filter 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      position: relative; overflow: hidden;
+      padding: 64px 24px 24px;
+    }
+    .hero {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center;
+    }
+    .hero h1 { margin: 0 0 16px; font-size: clamp(28px, 4.4vw, 48px); }
+    .hero p { margin: 0 0 24px; color: var(--muted); font-size: clamp(14px, 2.2vw, 18px); }
+    .hero-art {
+      border-radius: 18px; overflow: hidden; background: linear-gradient(160deg, rgba(124,247,255,0.15), rgba(255,124,242,0.12));
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 80px rgba(124,247,255,0.1);
+      position: relative;
+    }
+    .hero-art img { display: block; width: 100%; height: auto; }
+
+    /* Main sections */
+    main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    section.card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(124, 247, 255, 0.18);
+      border-radius: 18px; padding: 24px; margin-bottom: 24px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+    }
+    section.card h2 { margin: 0 0 8px; font-size: clamp(20px, 3.4vw, 28px); }
+    section.card .sub { color: var(--muted); margin-bottom: 16px; }
+
+    .grid {
+      display: grid; gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .step { background: var(--card); border-radius: 14px; padding: 18px; border: 1px solid rgba(255,255,255,0.08); }
+    .step h3 { margin: 0 0 8px; font-size: 18px; }
+    .step p { margin: 0 0 12px; color: var(--muted); }
+    .step .thumb { width: 100%; border-radius: 10px; border: 1px dashed rgba(124,247,255,0.35); background: rgba(12,18,32,0.6); aspect-ratio: 16/9; display: grid; place-items: center; color: #7cf7ff; font-size: 13px; }
+
+    .qa { display: grid; gap: 12px; }
+    .qa-item { background: var(--card); border-radius: 14px; padding: 16px; border: 1px solid rgba(255,255,255,0.08); }
+    .qa-item b { color: var(--text); }
+    .note { color: var(--warning); font-size: 13px; }
+
+    footer {
+      margin-top: 24px; padding: 24px; background: rgba(12,18,32,0.6); border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; gap: 18px; grid-template-columns: 1.4fr 1fr; }
+    .small { color: var(--muted); font-size: 13px; }
+
+    /* Accessibility helpers */
+    .sr-only { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 1. アイキャッチ / メインビジュアル -->
+  <header aria-label="アイキャッチ・メインビジュアル">
+    <div class="hero">
+      <div>
+        <h1 class="pixel-title glow">VideoPhotoBook</h1>
+        <p>ARマーカーの上にあなたの動画を重ねて再生するARアプリ。設定とAR実行の2画面構成で、操作はシンプル。ダブルタップで全画面切替も可能。</p>
+        <a class="btn" href="#main-content" aria-label="メインコンテンツへ">使い方を見る</a>
+      </div>
+      <div class="hero-art" aria-label="アプリのイメージ">
+        <img src="images/eyecatch_videophotobook.png" alt="ARマーカーの上に動画が浮かぶメインビジュアル（未来的でカラフルなUI）" />
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+    <!-- 2. メインコンテンツ -->
+    <section class="card" aria-labelledby="intro">
+      <h2 id="intro">アプリ概要</h2>
+      <p class="sub">VideoPhotoBookは、設定したARマーカーを検知すると、そのマーカー上に選択した動画を表示・再生するARアプリです。設定画面とAR実行画面の2画面で構成されます。</p>
+      <div class="grid">
+        <div class="step">
+          <h3>設定画面</h3>
+          <p>ARマーカーと再生する動画の紐付けを設定します。スマホ内の任意の動画を選択可能です。</p>
+          <div class="thumb">
+            <img src="images/FreeFragment_LinkingSettingsDialog.png" alt="設定画面イメージ（リスト＋ダイアログ）" />
+          </div>
+        </div>
+        <div class="step">
+          <h3>AR実行画面</h3>
+          <p>設定済みのARマーカーを探して検知すると、マーカー上に動画を表示します。ダブルタップで全画面切替。</p>
+          <div class="thumb">
+            <video src="images/ArFragment_288.mp4" autoplay loop muted playsinline/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="howto">
+      <h2 id="howto">使い方（ステップガイド）</h2>
+      <p class="sub">以下の手順に沿って設定すると、AR上で動画が再生されます。</p>
+
+      <div class="grid">
+        <div class="step">
+          <h3>1. 画面構成</h3>
+          <p>アプリは「設定画面」と「AR実行画面」で構成されています。</p>
+          <img class="thumb" src="images/FreeFragment+ArFragment.png" alt="設定画面とAR実行画面の2画面構成イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>2. 紐付け設定</h3>
+          <p>設定画面で、ARマーカーと再生する動画の紐付けを行います。</p>
+          <img class="thumb" src="images/LinkingSettingsDialog.png" alt="ARマーカーと動画の紐付け設定イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>3. リスト構成</h3>
+          <p>紐付け設定セットは10個。RecycleViewのリストで表示されます。</p>
+          <img class="thumb" src="images/step03_list.png" alt="10件の紐付けセットを持つリスト表示イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>4. ダイアログで設定</h3>
+          <p>個別アイテムをタップすると、紐付けのダイアログ画面が表示され、そこで設定します。</p>
+          <img class="thumb" src="images/step04_dialog.png" alt="紐付け設定ダイアログ（動画選択、OK/CANCEL）のイメージ" />
+        </div>
+
+        <div class="step">
+          <h3>5. 動画選択</h3>
+          <p>スマホ内の動画を選択できます。<span class="note">※著作権はご自身で解決済の動画をご利用ください。本アプリは関知しません。</span></p>
+          <img class="thumb" src="images/step05_pickvideo.png" alt="端末内の動画選択画面イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>6. マーカー枠</h3>
+          <p>ARマーカーの枠は変更できません。アプリはその枠を検知しています。</p>
+          <img class="thumb" src="images/step06_markerframe.png" alt="固定されたARマーカー枠の例" />
+        </div>
+
+        <div class="step">
+          <h3>7. 検知開始</h3>
+          <p>AR実行画面では、設定画面で指定したARマーカーを探します。</p>
+          <img class="thumb" src="images/step07_scan.png" alt="AR実行画面でのマーカー探索イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>8. 動画表示</h3>
+          <p>マーカーを検知すると、その上に動画を表示して再生します。</p>
+          <img class="thumb" src="images/step08_overlay.png" alt="マーカー上に動画が重なるオーバーレイ表示イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>9. 全画面切替</h3>
+          <p>動画再生中に画面をダブルタップすると全画面表示。さらにダブルタップで元に戻ります。</p>
+          <img class="thumb" src="images/step09_fullscreen.png" alt="ダブルタップで全画面切替の操作イメージ" />
+        </div>
+
+        <div class="step">
+          <h3>10. 複数マーカー</h3>
+          <p>複数検知した場合、対象マーカーをタップして再生動画を切り替えられます。</p>
+          <img class="thumb" src="images/step10_multi.png" alt="複数マーカー検知時の切替操作イメージ" />
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="qa">
+      <h2 id="qa">Q&A（よくある質問）</h2>
+      <div class="qa">
+        <div class="qa-item">
+          <p><b>Q:</b> 動画の形式は何でも再生できますか？</p>
+          <p><b>A:</b> 端末とアプリで再生可能な一般的なフォーマット（例：MP4）を推奨します。再生不可の場合は他形式に変換してください。</p>
+        </div>
+        <div class="qa-item">
+          <p><b>Q:</b> ARマーカーはオリジナルに変更できますか？</p>
+          <p><b>A:</b> マーカー枠は固定です。枠の形状や比率の変更はできません。</p>
+        </div>
+        <div class="qa-item">
+          <p><b>Q:</b> 複数の動画を同時に再生できますか？</p>
+          <p><b>A:</b> 複数マーカーを検知した場合はタップで切り替え可能ですが、同時再生は行いません。</p>
+        </div>
+        <div class="qa-item">
+          <p><b>Q:</b> プライバシーやデータの扱いは？</p>
+          <p><b>A:</b> 端末内の動画選択のみで、クラウド送信はしません。詳細は<a href="privacy.html">プライバシーポリシー</a>をご参照ください。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 3. フッター -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <p class="small">© 2025 VideoPhotoBook</p>
+        <p class="small">このサイトは、ARアプリ「VideoPhotoBook」の使い方ガイドです。表示画像はイメージであり、実際のUIは端末・バージョンによって異なる場合があります。</p>
+      </div>
+      <div>
+        <p><a href="privacy.html" class="btn" aria-label="プライバシーポリシーへ">プライバシーポリシー</a></p>
+        <p class="small">お問い合わせ：contact@videophotobook.example</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
