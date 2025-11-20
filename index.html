@@ -75,8 +75,8 @@
     .step h3 { margin: 0 0 8px; font-size: 18px; }
     .step p { margin: 0 0 12px; color: var(--muted); }
     .step .thumb { width: 100%; border-radius: 10px; border: 1px dashed rgba(124,247,255,0.35); background: rgba(12,18,32,0.6); aspect-ratio: 16/9; display: grid; place-items: center; color: #7cf7ff; font-size: 13px; }
-    .step .thumb img,
-    .step .thumb video {width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
+    .step .thumb img   {width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
+    .step .thumb video {width: 100%; height: auto; display: block; border-radius: 10px; }
     .qa { display: grid; gap: 12px; }
     .qa-item { background: var(--card); border-radius: 14px; padding: 16px; border: 1px solid rgba(255,255,255,0.08); }
     .qa-item b { color: var(--text); }
@@ -159,39 +159,41 @@
 
         <div class="step">
           <h3>3. 再生する動画を設定</h3>
-          <p>先に動画を設定してください。動画を設定することでARマーカーも自動で設定されます。</p>
-          <p>手順4でARマーカーを設定しますが、デフォルトのままでよければ、手順5を実行することもできます。</p>
+          <p>先に動画を設定してください。動画を設定することでARマーカーも自動で設定されます。<span class="note">※著作権はご自身で解決済の動画をご利用ください。本アプリは関知しません。</span></p>
+          <p>手順4でARマーカーを設定しますが、デフォルトのままでよければ、手順5に進んでください。</p>
           <img class="thumb" src="images/LinkingSettingsDialog2+2.png" alt="ARマーカーと動画の紐付け設定イメージ" />
         </div>
 
         <div class="step">
           <h3>4. ARマーカーを設定</h3>
           <p>ARマーカーは動画を設定すると自動で設定されますが、別のマーカーに変更することもできます。</p>
-          <img class="thumb" src="images/step03_list.png" alt="10件の紐付けセットを持つリスト表示イメージ" />
+          <img class="thumb" src="images/LinkingSettingsDialog3.png" alt="10件の紐付けセットを持つリスト表示イメージ" />
         </div>
 
         <div class="step">
-          <h3>4. ダイアログで設定</h3>
-          <p>個別アイテムをタップすると、紐付けのダイアログ画面が表示され、そこで設定します。</p>
-          <img class="thumb" src="images/step04_dialog.png" alt="紐付け設定ダイアログ（動画選択、OK/CANCEL）のイメージ" />
+          <h3>5. 保存</h3>
+          <p>保存してダイアログを終了します。</p>
+          <img class="thumb" src="images/LinkingSettingsDialog4.png" alt="紐付け設定ダイアログ（動画選択、OK/CANCEL）のイメージ" />
+        </div>
+
+        <div class="step">
+          <h3>7. Scan開始</h3>
+          <p>AR実行画面では、設定画面で指定したARマーカーをScanします。</p>
+          <div class="thumb">
+            <video src="images/ArFragment.mp4" autoplay loop muted playsinline/>
+          </div>
         </div>
 
         <div class="step">
           <h3>5. 動画選択</h3>
           <p>スマホ内の動画を選択できます。<span class="note">※著作権はご自身で解決済の動画をご利用ください。本アプリは関知しません。</span></p>
-          <img class="thumb" src="images/step05_pickvideo.png" alt="端末内の動画選択画面イメージ" />
+            <img class="thumb" src="images/step05_pickvideo.png" alt="端末内の動画選択画面イメージ" />
         </div>
 
         <div class="step">
           <h3>6. マーカー枠</h3>
           <p>ARマーカーの枠は変更できません。アプリはその枠を検知しています。</p>
           <img class="thumb" src="images/step06_markerframe.png" alt="固定されたARマーカー枠の例" />
-        </div>
-
-        <div class="step">
-          <h3>7. 検知開始</h3>
-          <p>AR実行画面では、設定画面で指定したARマーカーを探します。</p>
-          <img class="thumb" src="images/step07_scan.png" alt="AR実行画面でのマーカー探索イメージ" />
         </div>
 
         <div class="step">
